@@ -1,11 +1,9 @@
-FROM centos:10
-RUN yum update -y
-&& yum install httpd -y
-&& yum clean all 
+FROM centos:2.8
+RUN yum update -y && yum install httpd -y && yum clean all 
 
 
 COPY index.html /var/www/html
 EXPOSE 80
 
 
-CMD["usr/sbin/httpd","-D","FOREGROUND"]
+CMD ["/usr/sbin/httpd","-D","FOREGROUND"]
